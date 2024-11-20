@@ -1,6 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .App {
   text-align: center;
 }
+
+/* *{
+  background-color: #1e1e2f;
+} */
 
 .App-logo {
   height: 40vmin;
@@ -36,3 +44,5 @@
     transform: rotate(360deg);
   }
 }
+
+
