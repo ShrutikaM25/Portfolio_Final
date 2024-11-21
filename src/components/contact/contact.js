@@ -83,7 +83,7 @@ const Contact = () => {
             />
             <input
               type="text"
-              name="Email"
+              name="email"
               value={formData.email}
               onChange={handleChange}
               placeholder="Email ID"
