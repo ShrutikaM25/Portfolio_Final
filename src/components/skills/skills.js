@@ -111,7 +111,9 @@ const Skills = () => {
 
                   return (
                     <div
-                      className="flex flex-col items-center justify-center bg-[#25213b] text-white p-2 rounded-md hover:bg-violet-600 transition-all shadow-md text-center"
+                    className="flex flex-col items-center justify-center bg-[#25213b] text-white p-2 rounded-md 
+                    hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-700 hover:text-white 
+                    transition-all duration-300 ease-in-out shadow-md text-center"
                       key={id}
                       style={{ minWidth: '70px', minHeight: '70px' }}
                       data-aos="flip-up"
@@ -121,12 +123,12 @@ const Skills = () => {
                         <img
                           src={imageSrc}
                           alt={skill}
-                          className="h-6 w-6 sm:h-8 bg-[#25213b] sm:w-8 mb-2"
+                          className="h-6 w-6 sm:h-8 sm:w-8 mb-2"
                         />
                       ) : (
-                        <span className="h-4 w-4 flex items-center bg-[#25213b] justify-center text-xs mb-2">?</span>
+                        <span className="h-4 w-4 flex items-center  justify-center text-xs mb-2">?</span>
                       )}
-                      <span className="font-medium bg-[#25213b] text-xs sm:text-sm truncate">
+                      <span className="font-medium text-xs sm:text-sm truncate">
                         {skill}
                       </span>
                     </div>

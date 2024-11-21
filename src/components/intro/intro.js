@@ -3,6 +3,7 @@ import './intro.css';
 import resume from '../../utils/Resume.pdf';
 import Typewriter from 'typewriter-effect';
 import Logo from '../../utils/5.png';
+import { Link } from 'react-router-dom/dist';
 
 const Intro = () => {
   const name = "Shrutika Malve";
@@ -69,8 +70,8 @@ const Intro = () => {
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-6" data-aos="fade-up">
-              <a
-                href="#projects"
+              <Link
+                to="/projects"
                 className="relative inline-block text-[#ffdb70] font-semibold py-2 px-6 rounded-lg shadow-xl overflow-hidden transition-all duration-300 group border-2 border-[#4c61d4]"
                 data-aos="fade-right"
               >
@@ -78,7 +79,7 @@ const Intro = () => {
                   View My Work
                 </span>
                 <span className="absolute inset-0 bg-gradient-to-r from-[#4c61d4] to-[#6a83f4] group-hover:from-[#ff758c] group-hover:to-[#ff7eb3] transition-transform duration-300 transform -translate-x-full group-hover:translate-x-0"></span>
-              </a>
+              </Link>
 
               <a
                 href={resume}

@@ -23,21 +23,41 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Home />
-      <Intro />
-      <AboutMe />
-      <Skills />
-      <Router>
+    <Router>
+      <div className="App">
         <Routes>
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/education" element={<Education />} />
+        <Route
+            path="/"
+            element={
+              <>
+                <Home />
+                <Intro />
+                <AboutMe />
+                <Skills />
+                <WorkExperience />
+                <ContactSection />
+              </>
+            }
+          />
+          <Route path="/about" element={
+            <>
+            <Home />
+            <AboutMe /></>
+            } />
+          <Route path="/skills" element={<><Home /><Skills /></>} />
+          <Route path="/projects" element={<><Home/> <Projects /></>} />
+          <Route path="/education" element={
+            <>
+            <Home />
+            <Education />
+            </>
+            } />
+          <Route path="/experience" element={<><Home /><WorkExperience /></>} />
+          <Route path="/contact" element={<><Home /><ContactSection /></>} />
         </Routes>
-      </Router>
-      <WorkExperience />
-      <ContactSection />
-      <Footer/>
-    </div>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

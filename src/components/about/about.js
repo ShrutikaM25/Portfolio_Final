@@ -1,6 +1,7 @@
 import React from 'react';
 import myImage from '../../utils/Photo.jpg'; // Replace with the actual path to your image
 import './about.css';
+import { Link } from 'react-router-dom/dist';
 
 const AboutMe = () => {
   
@@ -48,7 +49,7 @@ const AboutMe = () => {
           Hello, I’m <strong className="text-[#ffd700]">Shrutika Malve</strong> 🌟 — a tech enthusiast driven by curiosity and innovation. Currently pursuing a{' '}
           <strong className="text-[#85d7ff]">Bachelor’s in Computer Engineering</strong> at{' '}
           <strong className="text-[#ffd700]">PICT</strong>, with a stellar GPA of{' '}
-          <strong className="text-[#ffa45c]">9.16</strong>. I am also a{' '}
+          <strong className="text-[#ffa45c]">9.17</strong>. I am also a{' '}
           <strong className="text-[#85d7ff]">Project Intern at Dell Technologies</strong>, tackling impactful real-world challenges.
         </p>
 
@@ -60,19 +61,19 @@ const AboutMe = () => {
           My journey includes developing projects like a{' '}
           <strong className="text-[#85d7ff]">Mental Health Analyzer</strong> and an{' '}
           <strong className="text-[#ffa45c]">ATS Tracker</strong>, showcasing my problem-solving skills. Check out my{' '}
-          <a
-            href="#experience"
+          <Link
+            to="/experience"
             className="text-[#ffdb70] font-bold underline hover:text-[#ffd85f]"
           >
             Experience
-          </a>{' '}
+          </Link>{' '}
           and{' '}
-          <a
-            href="#projects"
+          <Link
+            to="/projects"
             className="text-[#ffdb70] font-bold underline hover:text-[#ffd85f]"
           >
             Projects
-          </a>{' '}
+          </Link>{' '}
           for more!
         </p>
 

@@ -54,7 +54,7 @@ const WorkExperience = () => {
                 <img
                   src={exp.logo}
                   alt={`${exp.company} logo`}
-                  className="w-full h-full object-contain rounded-full bg-[#25213b]"
+                  className="w-full h-full object-contain rounded-full bg-[#fff]"
                 />
               }
               contentStyle={{ background: '#25213b', color: '#d3d3d3' }}

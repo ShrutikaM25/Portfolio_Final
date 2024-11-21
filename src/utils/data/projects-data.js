@@ -1,7 +1,16 @@
-import ayla from '../svg/projects/eleven.svg';
-import crefin from '../svg/projects/eight.svg';
-import realEstate from '../svg/projects/three.svg';
-import travel from '../svg/projects/sample.svg';
+import ATS from '../Projects/1.jpg'
+import Steganography from '../Projects/2.jpg';
+import PageTalk from '../Projects/3.png';
+import Currency from '../Projects/4.png';
+import rapidcare from '../Projects/5.png';
+import JusticeMet from '../Projects/6.png';
+import Calorie from '../Projects/7.png';
+import Chatbot from '../Projects/8.png';
+import Twitter from '../Projects/9.png';
+import handmade from '../Projects/10.png';
+import FML from '../Projects/11.png';
+import review from '../Projects/12.png';
+
 
 export const projectsData = [
     {
@@ -9,10 +18,10 @@ export const projectsData = [
         name: 'Personalized Mental Health Analyser using Federated Machine Learning',
         description: "Engineered a RESTful API with JSON integration to enhance the Mental Health System, achieving a 50% reduction in response time for personalized assessments using Flask, TensorFlow, and Gemini API.",
         tools: [' Tensorflow' , 'Keras' , 'Numpy', 'Pandas', 'HTML', 'CSS', 'Javascript', 'Flask' ,'Python', 'Gemini API', 'JSON'],
-        role: 'Full Stack Developer',
+        role: 'Full Stack Development and Machine Learning',
         code: 'https://github.com/ShrutikaM25',
         demo: 'https://github.com/ShrutikaM25',
-        image: crefin,
+        image: FML,
     },
     {
         id: 2,
@@ -22,7 +31,7 @@ export const projectsData = [
         role: 'Full Stack Developer',
         code: 'https://github.com/ShrutikaM25',
         demo: 'https://github.com/ShrutikaM25',
-        image: travel,
+        image: ATS,
     },
     {
         id: 3,
@@ -32,7 +41,7 @@ export const projectsData = [
         code: 'https://github.com/ShrutikaM25',
         role: 'Full Stack Developer',
         demo: 'https://github.com/ShrutikaM25',
-        image: realEstate,
+        image: Twitter,
     },
     {
         id: 4,
@@ -41,7 +50,7 @@ export const projectsData = [
         tools: ['Python', 'Gradio', 'REST API', 'Requests', 'JSON'],
         code: 'https://github.com/ShrutikaM25',
         demo: 'https://github.com/ShrutikaM25',
-        image: ayla,
+        image: Chatbot,
         role: 'Full Stack Developer',
     },
     {
@@ -51,7 +60,7 @@ export const projectsData = [
         tools: ['Python', 'Gradio', 'REST API', 'Requests', 'JSON'],
         code: 'https://github.com/ShrutikaM25',
         demo: 'https://github.com/ShrutikaM25',
-        image: ayla,
+        image: Calorie,
         role: 'Full Stack Developer',
     },
     {
@@ -61,7 +70,7 @@ export const projectsData = [
         tools: ['React.js', 'Node.js', 'Express.js', 'Bootstrap4', 'Tailwind CSS', 'csv', 'Charts.js', 'Pandas', 'Numpy'],
         code: 'https://github.com/ShrutikaM25',
         demo: 'https://github.com/ShrutikaM25',
-        image: ayla,
+        image: Currency,
         role: 'Full Stack Developer',
     },
 
@@ -72,7 +81,7 @@ export const projectsData = [
         tools: ['React.js' , 'Bootstrap' , 'Spring Boot', 'Gradle', 'MongoDB'],
         code: 'https://github.com/ShrutikaM25',
         demo: 'https://github.com/ShrutikaM25',
-        image: ayla,
+        image: review,
         role: 'Full Stack Developer',
     },
 
@@ -83,7 +92,7 @@ export const projectsData = [
         tools: [ 'React.js' ,'Bootstrap' , 'Node.js' , 'Express.js' , 'MongoDB'],
         code: 'https://github.com/ShrutikaM25',
         demo: 'https://github.com/ShrutikaM25',
-        image: ayla,
+        image: rapidcare,
         role: 'Full Stack Developer',
     },
     {
@@ -93,7 +102,7 @@ export const projectsData = [
         tools: [ 'React.js' ,'Bootstrap' , 'Redux' , 'Stripe' , 'JSON'],
         code: 'https://github.com/ShrutikaM25',
         demo: 'https://github.com/ShrutikaM25',
-        image: ayla,
+        image: handmade,
         role: 'Frontend Developer',
     },
 
@@ -104,7 +113,7 @@ export const projectsData = [
         tools: [ 'Next.js', 'Material-UI', 'Node.js', 'Express.js' , 'Langchain framework' , 'Supabase', 'Python', 'LLM', 'Tailwind CSS', 'MongoDB'],
         code: 'https://github.com/ShrutikaM25',
         demo: 'https://github.com/ShrutikaM25',
-        image: ayla,
+        image: PageTalk,
         role: 'Full Stack Developer',
     },
     {
@@ -114,10 +123,27 @@ export const projectsData = [
         tools: [ 'Python', 'Tkinter', 'PIL (Pillow)', 'Stegano',  'OS',  'Sys'],
         code: 'https://github.com/ShrutikaM25',
         demo: 'https://github.com/ShrutikaM25',
-        image: ayla,
+        image: Steganography,
         role: 'Cyber Security',
     },
-
+    {
+        id: 12,
+        name: 'JusticeMet - AI-Driven Legal Chatbot',
+        description: 'Developed an Android-based legal chatbot leveraging Gemini-1.5-Flash and Retrieval-Augmented Generation (RAG) for accurate "Guilty" or "Not Guilty" predictions. Integrated explainable AI, secure data handling with encryption, and a feedback mechanism to enhance prediction accuracy and user experience. Utilized Pinecone Vector DB for case precedent retrieval and Flask for seamless backend communication.',
+        tools: [
+          'React Native',
+          'Flask',
+          'MongoDB',
+          'Gemini-1.5-Flash',
+          'Pinecone Vector DB',
+          'RAG',
+          'Encryption'
+        ],
+        role: 'Full Stack Developer',
+        code: 'https://github.com/ShrutikaM25',
+        demo: 'https://github.com/ShrutikaM25',
+        image: JusticeMet
+      },
 
 ];
 

@@ -1,6 +1,6 @@
-import NewtonsApple from '../../utils/newtons_apple.png'
+import NewtonsApple from '../../utils/na2.png'
 import Downpour from '../../utils/downpour.jpeg';
-import Dell from '../../utils/dell.png';
+import Dell from '../../utils/dell.jpg';
 import Pict from '../../utils/pict.jpeg';
 
 export const experiences = [
