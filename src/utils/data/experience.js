@@ -2,6 +2,8 @@ import NewtonsApple from '../../utils/na2.png'
 import Downpour from '../../utils/downpour.jpeg';
 import Dell from '../../utils/dell.jpg';
 import Pict from '../../utils/pict.jpeg';
+import gamedev from '../../utils/gamedev.jpeg';
+import nullclass from '../../utils/nullclass.png';
 
 export const experiences = [
   {
@@ -41,9 +43,31 @@ export const experiences = [
     company: 'Pune Institute of Computer Technology ',
     duration: 'Jan 2024 - April 2024',
     description:
-      'Contributed to backend systems using Node.js, Firebase, Firestore, and GitHub. Collaborated with frontend teams to deliver end-to-end functionality for multiple projects.',
-    techStack: ['Tensorflow', 'Keras', 'Numpy', 'GitHub', 'Pandas', 'HTML', 'CSS', 'Javascript', 'JSON'],
+      'Developed a privacy-focused FML framework for depression analysis and prediction, enabling local data processing to safeguard user privacy. The model incorporates diverse datasets across demographics to deliver accurate, inclusive, and scalable predictions, aiming to revolutionize mental health care analytics with personalized treatment insights.',
+    techStack: ['Tensorflow', 'Keras', 'Numpy', 'GitHub', 'Pandas', 'HTML', 'CSS', 'Javascript', 'JSON', 'Fedarated Machine Learning', 'Data Privacy Techniques',
+    'Scalable Model Training','Mental Health Analytics'],
     logo: Pict
   },
+  {
+    id: 5,
+    position: 'Web Developer',
+    company: 'GameDevUtopia - Game Development Club (PICT)',
+    duration: 'Jan 2024 - April 2024',
+    description:
+      'Launched an official club website that improved collaboration for 50+ members, boosted event updates, and increased engagement by 40 %. Empowering students to showcase their talents on a global stage.',
+    techStack: ['Nextjs', 'Material-UI', 'Tailwind CSS', 'Node.js', 'Express.js', 'MongoDB', 'AWS S3', 'GitHub', 'Render', 'Vercel',],
+    logo: gamedev
+  },
+  {
+    id: 6,
+    position: 'Full Stack Web Developer Intern',
+    company: 'GameDevUtopia - Game Development Club (PICT)',
+    duration: 'Jan 2024 - April 2024',
+    description:
+      'Developed an innovative social media platform featuring real-time user authentication and profile updates with Firebase, dynamic content posting (images, videos, messages), and live weather-based animations. Implemented a video conferencing system supporting 100+ users, and a subscription model with Razorpay for premium features. Scaled the platform globally using MongoDB for seamless data management, boosting user engagement and interaction.',
+    techStack: ['React.js', 'Material-UI', 'Node.js', 'Express.js', 'Firebase', 'MongoDB', 'Render', 'JWT', 'Stripe'],
+    logo: nullclass
+  },
+
 
 ]

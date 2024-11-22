@@ -28,7 +28,7 @@ export const projectsData = [
         name: ' AI-Powered ATS Tracker and Resume Optimization Platform',
         description: 'Built an ATS platform with Google Generative AI for smart resume analysis, featuring Skill Gap Analysis, Job Fit Prediction, and real-time feedback. The Streamlit dashboard processes over 1,500 data points, improving hiring decisions, with seamless PDF handling via pdf2image and PIL',
         tools: [ 'Python' , 'Streamlit' , 'Google Generative AI' , 'pdf2image' , 'PIL'],
-        role: 'Full Stack Developer',
+        role: 'GenAI and Machine Learning',
         code: 'https://github.com/ShrutikaM25',
         demo: 'https://github.com/ShrutikaM25',
         image: ATS,
@@ -39,7 +39,7 @@ export const projectsData = [
         description: 'Developed an innovative social media platform featuring real-time user authentication and profile updates with Firebase, dynamic content posting (images, videos, messages), and live weather-based animations. Implemented a video conferencing system supporting 100+ users, and a subscription model with Razorpay for premium features. Scaled the platform globally using MongoDB for seamless data management, boosting user engagement and interaction.',
         tools: [ 'React.js', 'Material-UI', 'Node.js', 'Express.js', 'Firebase', 'MongoDB', 'Render', 'JWT', 'Stripe'],
         code: 'https://github.com/ShrutikaM25',
-        role: 'Full Stack Developer',
+        role: 'Full Stack Development',
         demo: 'https://github.com/ShrutikaM25',
         image: Twitter,
     },
@@ -51,7 +51,7 @@ export const projectsData = [
         code: 'https://github.com/ShrutikaM25',
         demo: 'https://github.com/ShrutikaM25',
         image: Chatbot,
-        role: 'Full Stack Developer',
+        role: 'GenAI and Machine Learning',
     },
     {
         id: 5,
@@ -61,7 +61,7 @@ export const projectsData = [
         code: 'https://github.com/ShrutikaM25',
         demo: 'https://github.com/ShrutikaM25',
         image: Calorie,
-        role: 'Full Stack Developer',
+        role: 'GenAI and Machine Learning',
     },
     {
         id: 6,
@@ -71,7 +71,7 @@ export const projectsData = [
         code: 'https://github.com/ShrutikaM25',
         demo: 'https://github.com/ShrutikaM25',
         image: Currency,
-        role: 'Full Stack Developer',
+        role: 'Full Stack Development',
     },
 
     {
@@ -82,7 +82,7 @@ export const projectsData = [
         code: 'https://github.com/ShrutikaM25',
         demo: 'https://github.com/ShrutikaM25',
         image: review,
-        role: 'Full Stack Developer',
+        role: 'Full Stack Development',
     },
 
     {
@@ -93,7 +93,7 @@ export const projectsData = [
         code: 'https://github.com/ShrutikaM25',
         demo: 'https://github.com/ShrutikaM25',
         image: rapidcare,
-        role: 'Full Stack Developer',
+        role: 'Full Stack Development',
     },
     {
         id: 9,
@@ -103,7 +103,7 @@ export const projectsData = [
         code: 'https://github.com/ShrutikaM25',
         demo: 'https://github.com/ShrutikaM25',
         image: handmade,
-        role: 'Frontend Developer',
+        role: 'Frontend Development',
     },
 
     {
@@ -114,7 +114,7 @@ export const projectsData = [
         code: 'https://github.com/ShrutikaM25',
         demo: 'https://github.com/ShrutikaM25',
         image: PageTalk,
-        role: 'Full Stack Developer',
+        role: 'Full Stack Development',
     },
     {
         id: 11,

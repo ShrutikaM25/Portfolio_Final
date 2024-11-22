@@ -15,7 +15,7 @@ const Projects = () => {
   return (
     <section id="projects" className="bg-[#1e1e2f] text-white py-12 px-4 lg:px-24 mb-0">
       {/* Header */}
-      <div className="flex justify-center mb-10" data-aos="fade-up">
+      <div className="flex justify-center sm:mt-20 mt-10 mb-10" data-aos="fade-up">
         <div className="flex items-center gap-4 relative">
           {/* Left Line */}
           <span className="w-12 sm:w-20 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-blue-500"></span>
@@ -34,23 +34,23 @@ const Projects = () => {
       </div>
 
       {/* Cards Grid */}
-      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid gap-4 sm:gap-8 md:gap-6 lg:gap-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
         {projectsData.map((project, index) => (
           <div
             key={project.id}
             className="bg-[#25213b] rounded-lg overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:rotate-3 hover:scale-105 p-2 sm:p-3"
             onClick={() => openModal(project)}
-            style={{ maxWidth: '260px', margin: 'auto' }}
+            style={{  width: '100%', minHeight: '320px' }}
             data-aos="fade-right" 
             data-aos-delay={index * 100} 
           >
             <img
               src={project.image}
               alt={project.name}
-              className="w-full h-28 sm:h-36 object-cover rounded-md"
+              className="w-full h-48 sm:h-52 lg:h-64 object-cover rounded-md"
             />
             <div className="mt-2 text-center">
-              <h3 className="text-sm sm:text-base font-semibold mb-1">{project.name}</h3>
+              <h3 className="text-lg sm:text-xl font-semibold mb-2">{project.name}</h3>
               <p className="text-xs sm:text-sm text-gray-400">Domain: {project.role}</p>
             </div>
           </div>
@@ -62,7 +62,7 @@ const Projects = () => {
         <div
           className="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50"
         >
-          <div className="bg-[#1e1e2f] w-11/12 max-w-[300px] p-3 rounded-lg relative">
+          <div className="bg-[#1e1e2f] w-11/12 lg:w-90 max-w-[500px] p-3 rounded-lg relative">
             {/* Close Button */}
             <button
               className="text-white text-xl absolute top-2 right-2"
@@ -75,7 +75,7 @@ const Projects = () => {
             <img
               src={selectedProject.image}
               alt={selectedProject.name}
-              className="w-full h-28 object-cover rounded-md mb-2"
+              className="w-full h-35 object-cover rounded-md mb-2"
             />
             <h3 className="text-sm font-semibold mb-2">{selectedProject.name}</h3>
             <p className="text-xs text-gray-400 mb-2">Role: {selectedProject.role}</p>

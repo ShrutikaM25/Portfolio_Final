@@ -3,6 +3,7 @@ import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { FiArrowUp } from 'react-icons/fi';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   useEffect(() => {
@@ -30,24 +31,24 @@ const Footer = () => {
           <h3 className="text-lg font-semibold text-white mb-2">Quick Links</h3>
           <ul className="space-y-1">
             <li>
-              <a href="#about" className="text-gray-300 hover:text-blue-400 transition">
+              <Link to="/about" className="text-gray-300 hover:text-blue-400 transition">
                 About Me
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#projects" className="text-gray-300 hover:text-purple-400 transition">
+              <Link to="/projects" className="text-gray-300 hover:text-purple-400 transition">
                 Projects
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#skills" className="text-gray-300 hover:text-teal-400 transition">
+              <Link to="/skills" className="text-gray-300 hover:text-teal-400 transition">
                 Skills
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#contact" className="text-gray-300 hover:text-pink-400 transition">
+              <Link to="/contact" className="text-gray-300 hover:text-pink-400 transition">
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -78,8 +79,8 @@ const Footer = () => {
           </a>
         </div>
         <div className="mt-4 flex justify-center" >
-  <a
-    href="/"
+  <Link
+    to="/"
     className="group relative inline-block text-white font-medium px-6 py-3 rounded-full shadow-lg transform transition animate-bounce
       bg-gradient-to-r from-purple-500 to-blue-500"
   >
@@ -89,7 +90,7 @@ const Footer = () => {
     <span className="relative text-white"> 
       <FiArrowUp size={30} />
     </span>
-  </a>
+  </Link>
 </div>
       </div>
 

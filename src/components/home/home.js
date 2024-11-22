@@ -30,19 +30,10 @@ const Home = () => {
           />
         </div>
 
-        {/* Hamburger Icon for small screens */}
-        <button 
-          className="lg:hidden text-[#ffdb70]" 
-          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        >
-          <span className="text-2xl">&#9776;</span>
-        </button>
 
         {/* Navigation for larger screens */}
         <nav className="hidden lg:flex space-x-8 text-base sm:text-sm md:text-lg" data-aos="fade-left" data-aos-delay="300">
         <Link to="/" className="text-[#a5f3eb] hover:text-[#ffdb70] bg-transparent hover:underline transition-all duration-300">Home</Link>
-          <Link to="/about" className="text-[#a5f3eb] hover:text-[#ffdb70] bg-transparent hover:underline transition-all duration-300">About</Link>
-          <Link to="/skills" className="text-[#a5f3eb] hover:text-[#ffdb70] bg-transparent hover:underline transition-all duration-300">Skills</Link>
           <Link to="/education" className="text-[#a5f3eb] hover:text-[#ffdb70] bg-transparent hover:underline transition-all duration-300">Education</Link>
           <Link to="/experience" className="text-[#a5f3eb] hover:text-[#ffdb70] bg-transparent hover:underline transition-all duration-300">Work Experience</Link>
           <Link to="/projects" className="text-[#a5f3eb] hover:text-[#ffdb70] bg-transparent hover:underline transition-all duration-300">Projects</Link>
@@ -52,10 +43,17 @@ const Home = () => {
 
       {/* Sidebar for small screens */}
       {isSidebarOpen && (
-        <div className="lg:hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-40">
-          <div className="w-64 bg-gray-900 text-white h-full p-4">
-            <div className="flex flex-col space-y-6">
-            <Link to="/" className="flex items-center space-x-2 text-[#a5f3eb] hover:text-[#ffdb70]" onClick={() => setIsSidebarOpen(false)}>
+        <div className="lg:hidden fixed top-0 left-0 w-full h-full bg-black/30 backdrop-blur-sm z-40">
+          <div className="w-64 bg-black/50 rounded-lg backdrop-blur-md text-white h-auto p-4 relative">
+            {/* Close Button */}
+            <button
+              className="absolute top-4 right-4 text-white text-2xl"
+              onClick={() => setIsSidebarOpen(false)}
+            >
+              &times;
+            </button>
+            <div className="flex flex-col space-y-6 mt-10">
+              <Link to="/" className="flex items-center space-x-2 text-[#a5f3eb] hover:text-[#ffdb70]" onClick={() => setIsSidebarOpen(false)}>
                 <FaHome />
                 <span>Home</span>
               </Link>
@@ -87,8 +85,7 @@ const Home = () => {
           </div>
         </div>
       )}
-    </header>
-  );
+    </header>  );
 };
 
 export default Home;

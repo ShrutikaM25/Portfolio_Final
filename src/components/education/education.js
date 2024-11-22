@@ -5,9 +5,9 @@ import { BsPersonWorkspace } from 'react-icons/bs';
 
 function Education() {
   return (
-    <section id="education" className="bg-[#1e1e2f] py-12 px-4 sm:py-16 sm:px-6 lg:px-24" data-aos="fade-up">
+    <section id="education" className="bg-[#1e1e2f] py-12 px-4 sm:py-16 sm:px-6 lg:px-24" >
       {/* Header Section */}
-      <div className="flex justify-center mb-8 sm:mb-10" data-aos="fade-up">
+      <div className="flex justify-center mt-10 mb-8 sm:mb-10" data-aos="fade-up">
         <div className="flex items-center gap-2 sm:gap-4 relative">
           {/* Left Line */}
           <span className="w-12 sm:w-16 lg:w-20 h-[1px] bg-gradient-to-r from-transparent via-blue-500 to-blue-500"></span>

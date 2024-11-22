@@ -132,7 +132,7 @@ const Contact = () => {
         </div>
         <div className="flex items-center space-x-4 bg-white" data-aos="fade-left" data-aos-delay="600">
           <FontAwesomeIcon icon={faEnvelope} className="text-yellow-400 bg-white" />
-          <p className='bg-white'>shrutim2409@gmail.com</p>
+          <p className='bg-white'>shruti03om@gmail.com</p>
         </div>
         <div className="flex items-center space-x-4 bg-white" data-aos="fade-left" data-aos-delay="800">
           <FontAwesomeIcon icon={faGlobe} className="text-yellow-400 bg-white" />

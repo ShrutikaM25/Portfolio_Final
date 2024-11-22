@@ -13,6 +13,7 @@ import WorkExperience from './components/experience/experience';
 import Education from './components/education/education';
 import ContactSection from './components/contact/contact';
 import Footer from './components/footer/footer';
+import Achievements from './components/achievements/achievements';
 
 function App() {
   useEffect(() => {
@@ -34,7 +35,7 @@ function App() {
                 <Intro />
                 <AboutMe />
                 <Skills />
-                <WorkExperience />
+                <Achievements />
                 <ContactSection />
               </>
             }
