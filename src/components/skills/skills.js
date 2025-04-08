@@ -59,29 +59,32 @@ const Skills = () => {
   }, [radius]);
 
   return (
-    <div id="skills" className="relative z-50 bg-[#1e1e2f] py-10">
+    <div id="skills" className="relative z-50 bg-gradient-to-br from-[#121212] via-[#1a1a2d] to-[#2a2a3f] py-10">
       {/* Section Heading */}
       <div
-        className="flex justify-center mb-10"
-        data-aos="fade-down"
-        data-aos-duration="1000"
-      >
-        <div className="flex items-center gap-4 relative">
-          {/* Left Line */}
-          <span className="w-20 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-blue-500"></span>
+  className="flex justify-center items-center mb-20 relative"
+  data-aos="fade-down"
+  data-aos-duration="1000"
+>
+  {/* Glowing aura behind the card */}
+  <div className="absolute w-72 h-40 bg-gradient-to-tr from-blue-500 via-purple-600 to-pink-500 blur-[90px] opacity-30 rounded-full z-0 animate-pulse" />
 
-          {/* Text Container */}
-          <div className="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-3 px-6 rounded-full shadow-md shadow-blue-300 relative z-10">
-            <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-700 tracking-wide">Skills</h2>
-          </div>
+  {/* Heading Card */}
+  <div className="relative z-10 px-10 py-4 sm:py-6 border border-white/10 bg-black/50 backdrop-blur-xl rounded-2xl shadow-[0_0_40px_rgba(99,102,241,0.3)] hover:shadow-[0_0_60px_rgba(139,92,246,0.4)] transition-all duration-500 overflow-hidden group">
+    
+    {/* Animated border shimmer */}
+    <span className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-borderGlow"></span>
 
-          {/* Right Line */}
-          <span className="w-20 h-[2px] bg-gradient-to-l from-transparent via-blue-500 to-blue-500"></span>
+    {/* Heading Text */}
+    <h2 className="text-4xl sm:text-5xl font-extrabold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradientText">
+      Skills
+    </h2>
 
-          {/* Glow Effect */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-600 to-purple-700 blur-xl opacity-50"></div>
-        </div>
-      </div>
+    {/* Underline effect */}
+    <div className="mt-2 h-1 w-20 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full mx-auto animate-pulseShadow" />
+  </div>
+</div>
+
 
       {/* Responsive Layout */}
       <div className="flex flex-col lg:flex-row items-start justify-between gap-8">

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import Tilt from 'react-parallax-tilt';
 import { projectsData } from '../../utils/data/projects-data';
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
 
   const openModal = (project) => {
+    console.log(project);
     setSelectedProject(project);
   };
 
@@ -15,47 +17,64 @@ const Projects = () => {
   return (
     <section id="projects" className="bg-[#1e1e2f] text-white py-12 px-4 lg:px-24 mb-0">
       {/* Header */}
-      <div className="flex justify-center sm:mt-20 mt-10 mb-10" data-aos="fade-up">
-        <div className="flex items-center gap-4 relative">
-          {/* Left Line */}
-          <span className="w-12 sm:w-20 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-blue-500"></span>
-
-          {/* Title */}
-          <div className="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-2 px-4 sm:py-3 sm:px-6 rounded-full shadow-md shadow-blue-300 relative z-10">
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-wide">Projects</h2>
+      <div className="relative flex justify-center items-center mb-32" data-aos="zoom-in-up">
+          {/* Glowing backdrop rings */}
+          <div className="absolute inset-0 flex justify-center items-center z-0">
+            <div className="w-[300px] h-[300px] rounded-full bg-gradient-to-tr from-blue-600 via-purple-600 to-pink-500 blur-[100px] opacity-25 animate-pulse"></div>
+            <div className="absolute w-64 h-64 border-2 border-purple-600/20 rounded-full animate-spin-slow"></div>
+            <div className="absolute w-40 h-40 border border-blue-500/10 rounded-full animate-spin-slower"></div>
           </div>
 
-          {/* Right Line */}
-          <span className="w-12 sm:w-20 h-[2px] bg-gradient-to-l from-transparent via-blue-500 to-blue-500"></span>
-
-          {/* Glow Effect */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-600 to-purple-700 blur-xl opacity-50"></div>
+          {/* Heading */}
+          <div className="relative z-10 px-10 mt-10 py-4 rounded-3xl bg-gradient-to-br from-[#0f0f0f] via-[#1a1a1a] to-[#000000] border border-white/10 shadow-[0_0_60px_#7c3aed33] hover:shadow-[0_0_80px_#9333ea44] transition-shadow duration-500 backdrop-blur-md">
+            <h2 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-fuchsia-500 to-pink-500 animate-gradientText">
+              PROJECTS
+            </h2>
+            <div className="mt-4 h-1 w-40 mx-auto bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full animate-pulse"></div>
+          </div>
         </div>
-      </div>
 
       {/* Cards Grid */}
-      <div className="grid gap-4 sm:gap-8 md:gap-6 lg:gap-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 max-w-7xl mx-auto z-10 relative px-2 sm:px-4">
         {projectsData.map((project, index) => (
-          <div
-            key={project.id}
-            className="bg-[#25213b] rounded-lg overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:rotate-3 hover:scale-105 p-2 sm:p-3"
-            onClick={() => openModal(project)}
-            style={{  width: '100%', minHeight: '320px' }}
-            data-aos="fade-right" 
-            data-aos-delay={index * 100} 
+          <Tilt
+          key={project.id}
+          glareEnable={true}
+          glareMaxOpacity={0.2}
+          tiltMaxAngleX={15}
+          tiltMaxAngleY={15}
+          className="cursor-pointer bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl overflow-hidden p-3 sm:p-4 shadow-[0_0_20px_#00000033] hover:shadow-[0_0_40px_#7f5af088] transform transition duration-500 group"
           >
-            <img
-              src={project.image}
-              alt={project.name}
-              className="w-full h-48 sm:h-52 lg:h-64 object-cover rounded-md"
-            />
-            <div className="mt-2 text-center">
-              <h3 className="text-lg sm:text-xl font-semibold mb-2">{project.name}</h3>
-              <p className="text-xs sm:text-sm text-gray-400">Domain: {project.role}</p>
+          {/* Make this the clickable wrapper */}
+          <div onClick={() => openModal(project)} data-aos="fade-right"  data-aos-delay={index * 100} >
+          <div className="relative w-full h-40 sm:h-48 md:h-56 overflow-hidden rounded-xl mb-3 sm:mb-4">
+              <img
+                src={project.image}
+                alt={project.name}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-60 transition-all duration-500 flex items-end p-4">
+              <h3 className="text-lg sm:text-xl font-bold text-white group-hover:translate-y-[-6px] transition-transform duration-300">
+              {project.name}
+                </h3>
+              </div>
+            </div>
+            <div className="text-gray-400 text-sm mb-3">Domain: {project.role}</div>
+            <div className="flex flex-wrap gap-2 text-xs">
+              {project.tools.map((tool, i) => (
+                <span
+                  key={i}
+                  className="text-[10px] sm:text-xs font-medium px-2 sm:px-3 py-1 rounded-full bg-gradient-to-tr from-[#312e81] via-[#9333ea] to-[#c026d3] text-white shadow-md shadow-indigo-600/30 hover:brightness-125 hover:scale-105 transition-all"
+                  >
+                  {tool}
+                </span>
+              ))}
             </div>
           </div>
+        </Tilt>        
         ))}
       </div>
+
 
       {/* Modal */}
       {selectedProject && (

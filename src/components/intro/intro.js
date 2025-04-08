@@ -16,7 +16,7 @@ const Intro = () => {
 
         {/* Floating Shapes */}
         <div className="absolute top-10 sm:top-20 left-1/4 sm:left-1/4 w-24 sm:w-32 h-24 sm:h-32 bg-gradient-to-r from-[#ff7eb3] to-[#ff758c] rounded-full animate-float"></div>
-        <div className="absolute bottom-10 sm:bottom-5 right-1/4 sm:right-1/4 w-32 sm:w-40 h-32 sm:h-40 bg-gradient-to-r from-[#6a83f4] to-[#4c61d4] rounded-full animate-float animation-delay-2s"></div>
+        <div className="absolute bottom-1 right-11 sm:right-1/4 w-24 h-24 sm:w-40 sm:h-40 bg-gradient-to-r from-[#6a83f4] to-[#4c61d4] rounded-full animate-float animation-delay-2s"></div>
 
         {/* Content Wrapper */}
         <div className="relative z-10 container mx-auto px-6 lg:px-12 flex flex-col-reverse lg:flex-row items-center gap-8">
@@ -55,10 +55,11 @@ const Intro = () => {
                 <Typewriter
                   options={{
                     strings: [
-                      "Web Developer",
-                      "MERN Stack Developer",
+                      "AI Researcher",
+                      "Full Stack Developer",
+                      "Machine Learning Enthusiast",
+                      "Generative AI Developer",
                       "Open Source Contributor",
-                      "Software Developer",
                     ],
                     autoStart: true,
                     loop: true,

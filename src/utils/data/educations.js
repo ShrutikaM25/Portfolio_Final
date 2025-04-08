@@ -2,9 +2,9 @@ export const educations = [
   {
     id: 1,
     title: "Bachelor in Computer Engineering",
-    duration: "2021 - Present",
+    duration: "2021 - 2025",
     institution: "Pune Institute of Computer Technology",
-    score: "9.17 CGPA"
+    score: "9.3 CGPA"
   },
   {
     id: 2,

@@ -19,20 +19,20 @@ const WorkExperience = () => {
       className="bg-[#1e1e2f] text-white py-12 px-4 sm:py-16 sm:px-6 lg:px-24"
     >
       {/* Header Section */}
-      <div className="flex justify-center mt-10 mb-8 sm:mb-10" data-aos="fade-up">
-        <div className="flex items-center gap-2 sm:gap-4 relative">
-          <span className="w-12 sm:w-16 lg:w-20 h-[1px] bg-gradient-to-r from-transparent via-blue-500 to-blue-500"></span>
-          <div
-            className="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-2 px-4 sm:py-3 sm:px-6 rounded-full shadow-md shadow-blue-300 relative z-10"
-            data-aos="zoom-in"
-            data-aos-delay="200"
-          >
-            <h2 className="text-lg sm:text-2xl lg:text-3xl font-bold tracking-wide">
-              Work Experience
-            </h2>
-          </div>
-          <span className="w-12 sm:w-16 lg:w-20 h-[1px] bg-gradient-to-l from-transparent via-blue-500 to-blue-500"></span>
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-600 to-purple-700 blur-lg sm:blur-xl opacity-40"></div>
+      <div className="relative flex justify-center items-center mb-32" data-aos="zoom-in-up">
+        {/* Glowing backdrop rings */}
+        <div className="absolute inset-0 flex justify-center items-center z-0">
+          <div className="w-[300px] h-[300px] rounded-full bg-gradient-to-tr from-blue-600 via-purple-600 to-pink-500 blur-[100px] opacity-25 animate-pulse"></div>
+          <div className="absolute w-64 h-64 border-2 border-purple-600/20 rounded-full animate-spin-slow"></div>
+          <div className="absolute w-40 h-40 border border-blue-500/10 rounded-full animate-spin-slower"></div>
+        </div>
+
+        {/* Heading */}
+        <div className="relative z-10 px-10 py-4 mt-4 rounded-3xl bg-gradient-to-br from-[#0f0f0f] via-[#1a1a1a] to-[#000000] border border-white/10 shadow-[0_0_60px_#7c3aed33] hover:shadow-[0_0_80px_#9333ea44] transition-shadow duration-500 backdrop-blur-md">
+          <h2 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-fuchsia-500 to-pink-500 animate-gradientText uppercase">
+            Experience
+          </h2>
+          <div className="mt-4 h-1 w-40 mx-auto bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full animate-pulse"></div>
         </div>
       </div>
 

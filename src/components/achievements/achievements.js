@@ -5,6 +5,30 @@ const Achievements = () => {
   const achievements = [
     {
       icon: <FaTrophy className="text-[#ffdb70] text-5xl mb-4" />,
+      title: "Winner - INC Technical Competition",
+      description:
+        "Secured 3rd place in a competitive event hosted by PICT during the INC technical fest.",
+    },
+    {
+      icon: <FaTrophy className="text-[#ffa45c] text-5xl mb-4" />,
+      title: "Winner - AIT Innovex Ideathon",
+      description:
+        "Crowned winner at the Innovex Ideathon hosted by AIT Pune for an impactful and innovative solution.",
+    },
+    {
+      icon: <FaMedal className="text-[#85d7ff] text-5xl mb-4" />,
+      title: "Runner-up - MMCOE Hackathon",
+      description:
+        "Achieved runner-up position at the Hackathon conducted by MMCOE, Pune.",
+    },
+    {
+      icon: <FaTrophy className="text-[#ff70b3] text-5xl mb-4" />,
+      title: "Finalist - Amdocs GenAI Hackathon",
+      description:
+        "Selected as one of the finalists in the prestigious GenAI Hackathon organized by Amdocs.",
+    },
+    {
+      icon: <FaTrophy className="text-[#ffdb70] text-5xl mb-4" />,
       title: "Semi-Finalist - All India Women Hackathon",
       description:
         "Participated in a technical hackathon hosted by Persistent in August 2023.",
@@ -29,7 +53,7 @@ const Achievements = () => {
     },
     {
       icon: <FaTrophy className="text-[#ffdb70] text-5xl mb-4" />,
-      title: "Semifinalist - Flipkart Grid 3.0",
+      title: "Semi-Finalist - Flipkart Grid 3.0",
       description:
         "Competed in Flipkart's national hackathon in July 2023.",
     },
@@ -45,7 +69,6 @@ const Achievements = () => {
       description:
         "Completed the Gandharva Degree in Classical Dance Bharatnatyam.",
     },
-    // New Achievements
     {
       icon: <FaTrophy className="text-[#ffdb70] text-5xl mb-4" />,
       title: "Semi-Finalist - Tachython 2024",
@@ -64,65 +87,64 @@ const Achievements = () => {
       description:
         "Participated in the Amazon Sambhav Hackathon in 2024.",
     },
-    {
-      icon: <FaMedal className="text-[#85d7ff] text-5xl mb-4" />,
-      title: "Participant - Seed Hackathon 2024",
-      description:
-        "Participated in the Seed Hackathon held in 2024.",
-    },
   ];
 
   return (
     <section
       id="achievements"
-      className="relative bg-[#1e1e2f] text-[#d3d3d3] py-12 px-6 lg:px-24"
+      className="relative bg-gradient-to-br from-[#0d0d0d] via-[#1c1c2c] to-[#2e2e3e] text-[#d3d3d3] py-20 px-6 lg:px-24 overflow-hidden"
     >
-      <div className="absolute inset-0 bg-[#1e1e2f] opacity-80 z-0"></div>
+      {/* Glowing Background Orbs */}
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[400px] h-[400px] bg-[#ffdb70]/20 blur-3xl rounded-full animate-pulse" />
+      <div className="absolute bottom-0 right-10 w-[300px] h-[300px] bg-[#85d7ff]/20 blur-2xl rounded-full animate-float" />
 
       <div className="max-w-7xl mx-auto relative z-10 text-center">
-        {/* Section Header */}
         <h2
-          className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-[#85d7ff] to-[#ffa45c]"
-          data-aos="fade-down"
-          data-aos-duration="800"
+          className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#ffdb70] via-[#ffa45c] to-[#ff70b3] drop-shadow-lg tracking-tight"
+          data-aos="zoom-in"
         >
-          🌟 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ffdb70] to-[#ffa45c]">Achievements</span>
+          🏆 Milestone Moments
         </h2>
-
         <p
-          className="text-sm sm:text-md lg:text-lg text-[#e0e0e0] max-w-3xl mx-auto mb-12"
+          className="text-md sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto mb-14"
           data-aos="fade-up"
-          data-aos-duration="1000"
         >
-          A collection of milestones showcasing my journey in technology, arts,
-          and leadership. Each step reflects growth and perseverance. 🚀
+          Showcasing a journey through code, creativity, and achievement — where passion meets impact.
         </p>
 
-        {/* Achievements Cards */}
         <div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
           data-aos="fade-up"
-          data-aos-duration="1200"
         >
           {achievements.map((achievement, index) => (
             <div
-              key={index}
-              className="relative bg-[#252539] p-6 rounded-2xl shadow-xl group transform hover:scale-105 transition-transform duration-300 hover:bg-gradient-to-r from-[#3b3b5e] to-[#1e1e2f]"
-              data-aos="fade-up"
-              data-aos-duration={`${1400 + index * 200}`}
-            >
-              {/* Icon */}
-              <div className="absolute top-0 right-0 m-4 opacity-20 group-hover:opacity-40 transition-opacity duration-300">
+            key={index}
+            className={`relative bg-[#1f1f2f] p-6 rounded-3xl shadow-xl group transform transition-transform duration-500 hover:scale-[1.06] hover:ring-2 hover:ring-[#ffdb70]/70 hover:bg-gradient-to-br from-[#2e2e4d] to-[#1a1a2a] hover:shadow-[0_0_30px_#ffdb70aa] ${
+              achievement.title.includes("Winner") || achievement.title.includes("Runner-up") || achievement.title.includes("Finalist")
+                ? "ring-2 ring-[#ff70b3]/60 animate-pulse"
+                : ""
+            }`}
+            data-aos="fade-up"
+            data-aos-delay={`${index * 100}`}
+          >
+            {/* Top badge for special wins */}
+            {(achievement.title.includes("Winner") || achievement.title.includes("Runner-up") || achievement.title.includes("Finalist")) && (
+              <div className="absolute top-0 left-0 bg-[#ff70b3] text-black font-bold px-3 py-1 text-xs rounded-br-xl z-20">
+                Highlight
+              </div>
+            )}
+              {/* Glow behind icon */}
+              <div className="absolute top-0 right-0 m-4 opacity-20 group-hover:opacity-50 transition-opacity duration-300">
                 {achievement.icon}
               </div>
-
-              {/* Content */}
               <div className="relative z-10">
-                <div className="mb-4 text-center">{achievement.icon}</div>
-                <h3 className="text-lg lg:text-xl font-semibold text-[#ffdb70] mb-2">
+                <div className="mb-4 text-center scale-105 group-hover:scale-125 transition-transform duration-300">
+                  {achievement.icon}
+                </div>
+                <h3 className="text-lg lg:text-xl font-bold text-[#ffdb70] mb-2 tracking-tight">
                   {achievement.title}
                 </h3>
-                <p className="text-[#d3d3d3] text-sm lg:text-base">
+                <p className="text-gray-300 text-sm lg:text-base leading-relaxed">
                   {achievement.description}
                 </p>
               </div>

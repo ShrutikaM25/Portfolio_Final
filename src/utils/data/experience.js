@@ -4,16 +4,27 @@ import Dell from '../../utils/dell.jpg';
 import Pict from '../../utils/pict.jpeg';
 import gamedev from '../../utils/gamedev.jpeg';
 import nullclass from '../../utils/nullclass.png';
+import Altometa from '../../utils/Altometa.jpeg';
 
 export const experiences = [
   {
     id: 1,
+    position: 'Analyst Trainee',
+    company: 'Altometa Consulting',
+    duration: 'Jan 2025 – Present',
+    description:
+      'Engineered a real-time chat API using Django EventStream and WebSockets, slashing LLM response latency by 500ms. Fine-tuned LLMs to increase accuracy by 30%, integrated LangChain and FAISS for vector retrieval, and implemented UUID-based response tracking with feedback optimization loops for continual improvement.',
+    techStack: ['Django', 'React.js', 'LangChain', 'FAISS', 'WebSockets', 'ASGI', 'CrewAI', 'LLM Fine-tuning', 'OpenAI'],
+    logo: Altometa
+  },
+  {
+    id: 2,
     position: 'Project Intern',
     company: 'Dell Technologies',
-    duration: 'August 2024 - Present',
+    duration: 'August 2024 - April 2025',
     description:
-      'Assisted in developing scalable web applications. Utilized MongoDB, Express, and JavaScript for data management and UI improvements. Enhanced app performance by implementing caching strategies.',
-    techStack: ['Machine Learning', 'Flask', 'Numpy', 'Pandas', 'BeautifulSoup4', 'Python', 'Supervised Learning', 'Unsupervised Learning', 'Reinforcement Learning'],
+      'Built an LLM-powered anomaly detection system integrating ZODB logging and ensemble ML models. Leveraged Ollama (Llama 3) for explainability, enabling real-time insight into 20K+ anomalies/month. Enhanced performance 5x using Redis caching and implemented a React-based analytics dashboard.',
+    techStack: ['Python', 'Flask', 'ZODB', 'Ollama', 'React.js', 'Redis', 'SSE', 'LLM', 'Anomaly Detection', 'Machine Learning', 'Watchdog'],
     logo: Dell
   },
   {
@@ -61,8 +72,8 @@ export const experiences = [
   {
     id: 6,
     position: 'Full Stack Web Developer Intern',
-    company: 'GameDevUtopia - Game Development Club (PICT)',
-    duration: 'Jan 2024 - April 2024',
+    company: 'Nullclass Technologies',
+    duration: 'Dec 2023 - March 2024',
     description:
       'Developed an innovative social media platform featuring real-time user authentication and profile updates with Firebase, dynamic content posting (images, videos, messages), and live weather-based animations. Implemented a video conferencing system supporting 100+ users, and a subscription model with Razorpay for premium features. Scaled the platform globally using MongoDB for seamless data management, boosting user engagement and interaction.',
     techStack: ['React.js', 'Material-UI', 'Node.js', 'Express.js', 'Firebase', 'MongoDB', 'Render', 'JWT', 'Stripe'],

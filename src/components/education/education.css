@@ -1,0 +1,80 @@
+/* Hide scrollbars */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  /* Neon ring around icon */
+  .neon-ring {
+    box-shadow: 0 0 15px #7f5af0, 0 0 30px #5ce1e6;
+  }
+  
+  /* Float animation */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  /* Glowing header text */
+  .glow-text {
+    text-shadow: 0 0 10px #6f42c1, 0 0 20px #3b82f6;
+  }
+  
+  /* Gradient animated line */
+  .animated-line {
+    background: linear-gradient(270deg, #3b82f6, #9333ea, #ec4899);
+    background-size: 600% 600%;
+    animation: gradientSlide 4s ease infinite;
+  }
+  
+  @keyframes gradientSlide {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Glassmorphism effect */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes gradientText {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .animate-gradientText {
+    background-size: 200% 200%;
+    animation: gradientText 5s ease infinite;
+  }
+  
+  @keyframes spin-slow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+  }
+  
+  .animate-spin-slower {
+    animation: spin-slow 40s linear infinite;
+  }
+  
