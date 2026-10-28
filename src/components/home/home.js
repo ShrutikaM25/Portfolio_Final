@@ -1,103 +1,173 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { FiDownload, FiMenu, FiX, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 import logo from '../../utils/2.png';
-import { Link, useLocation } from 'react-router-dom';
-import {
-  FaHome,
-  FaInfoCircle,
-  FaLaptopCode,
-  FaGraduationCap,
-  FaBriefcase,
-  FaPhone,
-  FaBars,
-} from 'react-icons/fa';
+import resume from '../../utils/Resume.pdf';
+import { personalData } from '../../utils/data/personal-data';
 
-const Home = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const location = useLocation();
+// Section ids rendered in App.js
+export const navLinks = [
+  { id: 'about', label: 'About' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'education', label: 'Education' },
+  { id: 'achievements', label: 'Achievements' },
+  { id: 'contact', label: 'Contact' },
+];
 
-  const navLinks = [
-    { to: '/', label: 'Home' },
-    { to: '/education', label: 'Education' },
-    { to: '/experience', label: 'Work Experience' },
-    { to: '/projects', label: 'Projects' },
-    { to: '/contact', label: 'Contact' },
-  ];
+const Navbar = () => {
+  const [activeId, setActiveId] = useState('home');
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const sidebarLinks = [
-    { to: '/', label: 'Home', icon: <FaHome /> },
-    { to: '/about', label: 'About', icon: <FaInfoCircle /> },
-    { to: '/skills', label: 'Skills', icon: <FaLaptopCode /> },
-    { to: '/education', label: 'Education', icon: <FaGraduationCap /> },
-    { to: '/experience', label: 'Work Experience', icon: <FaBriefcase /> },
-    { to: '/projects', label: 'Projects', icon: <FaLaptopCode /> },
-    { to: '/contact', label: 'Contact', icon: <FaPhone /> },
-  ];
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Highlight whichever section crosses the middle of the viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => entry.isIntersecting && setActiveId(entry.target.id)),
+      { rootMargin: '-45% 0px -50% 0px' }
+    );
+    ['home', ...navLinks.map((link) => link.id)].forEach((id) => {
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  // Lock page scroll and allow Escape while the mobile menu is open
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+    const onKey = (event) => event.key === 'Escape' && setMenuOpen(false);
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [menuOpen]);
 
   return (
-    <header className="bg-transparent text-white py-4 fixed top-0 left-0 w-full z-50 backdrop-blur-md transition-all duration-300 shadow-xl">
-      <div className="container mx-auto flex justify-between items-center px-6">
-        {/* Logo */}
-        <div className="flex items-center gap-4">
-          <img
-            src={logo}
-            alt="Shrutika Malve Logo"
-            className="h-14 w-auto cursor-pointer"
-          />
-          <button
-            className="text-xl lg:hidden text-white hover:text-[#ffdb70] transition"
-            onClick={() => setIsSidebarOpen(true)}
-          >
-            <FaBars />
-          </button>
-        </div>
+    <>
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+        scrolled ? 'border-b border-white/5 bg-ink-950/75 py-3 backdrop-blur-lg' : 'border-b border-transparent py-5'
+      }`}
+    >
+      <div className="container-x flex items-center justify-between gap-4">
+        <a href="#home" className="flex items-center gap-2.5" aria-label="Back to top">
+          <img src={logo} alt="" className="h-9 w-auto" />
+          <span className="hidden font-display text-base font-semibold text-white sm:inline">{personalData.firstName}</span>
+        </a>
 
-        {/* Desktop Navigation */}
+        {/* Desktop navigation */}
         <nav
-          className="hidden lg:flex space-x-10 text-lg"
-          data-aos="fade-left"
-          data-aos-delay="300"
+          aria-label="Main"
+          className={`hidden items-center rounded-full border p-1.5 backdrop-blur-xl transition-colors duration-500 lg:flex ${
+            scrolled ? 'border-white/10 bg-ink-900/80 shadow-xl shadow-black/40' : 'border-white/5 bg-white/[0.03]'
+          }`}
         >
           {navLinks.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className={`relative group text-[#a5f3eb] hover:text-[#ffdb70] transition-all text-lg duration-300 ${
-                location.pathname === link.to ? 'text-[#ffdb70]' : ''
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              className={`relative rounded-full px-4 py-1.5 text-sm transition-colors ${
+                activeId === link.id ? 'text-white' : 'text-slate-400 hover:text-white'
               }`}
             >
+              {activeId === link.id && (
+                <motion.span
+                  layoutId="nav-active"
+                  className="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-violet-600/60 to-cyan-600/50"
+                  transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+                />
+              )}
               {link.label}
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#ffdb70] transition-all duration-300 group-hover:w-full"></span>
-            </Link>
+            </a>
           ))}
         </nav>
-      </div>
 
-      {/* Sidebar */}
-      {isSidebarOpen && (
-        <div className="lg:hidden fixed top-0 left-0 w-full h-full z-40 flex justify-start">
-          <div className="flex flex-col rounded-r-2xl w-60 h-fit bg-black/40 backdrop-blur-lg p-6 space-y-6 relative shadow-2xl">
-              <button
-                className="absolute top-5 right-5 text-2xl text-white"
-                onClick={() => setIsSidebarOpen(false)}
-              >
-                &times;
-              </button>
-              {sidebarLinks.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  className="flex items-center space-x-3 text-[#a5f3eb] hover:text-[#ffdb70] transition-all"
-                  onClick={() => setIsSidebarOpen(false)}
-                >
-                  {link.icon}
-                  <span>{link.label}</span>
-                </Link>
-              ))}
-            </div>
+        <div className="flex items-center gap-2">
+          <a href={resume} download="Shrutika_Malve_Resume.pdf" className="btn-ghost hidden !px-4 !py-2 sm:inline-flex">
+            <FiDownload /> Résumé
+          </a>
+          <button
+            type="button"
+            aria-label="Open menu"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen(true)}
+            className="rounded-xl border border-white/10 bg-white/5 p-2.5 text-xl text-white lg:hidden"
+          >
+            <FiMenu />
+          </button>
         </div>
-      )}
+      </div>
     </header>
+
+      {/* Mobile menu: a sibling of <header>, because the header's backdrop-filter
+          would otherwise become the containing block for this fixed overlay */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            className="fixed inset-0 z-[60] flex flex-col bg-ink-950/95 px-6 pb-10 pt-6 backdrop-blur-xl lg:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <div className="flex items-center justify-between">
+              <img src={logo} alt="" className="h-9 w-auto" />
+              <button
+                type="button"
+                aria-label="Close menu"
+                onClick={() => setMenuOpen(false)}
+                className="rounded-xl border border-white/10 bg-white/5 p-2.5 text-xl text-white"
+              >
+                <FiX />
+              </button>
+            </div>
+
+            <nav aria-label="Mobile" className="mt-12 flex flex-col gap-2">
+              {navLinks.map((link, i) => (
+                <motion.a
+                  key={link.id}
+                  href={`#${link.id}`}
+                  onClick={() => setMenuOpen(false)}
+                  initial={{ opacity: 0, x: -24, rotateY: -30 }}
+                  animate={{ opacity: 1, x: 0, rotateY: 0 }}
+                  transition={{ delay: 0.05 * i }}
+                  className="flex items-baseline gap-4 py-2 font-display text-3xl font-semibold text-white"
+                >
+                  <span className="font-mono text-xs text-cyan-300">0{i + 1}</span>
+                  {link.label}
+                </motion.a>
+              ))}
+            </nav>
+
+            <div className="mt-auto flex items-center gap-3">
+              <a href={resume} download="Shrutika_Malve_Resume.pdf" className="btn-primary flex-1">
+                <FiDownload /> Résumé
+              </a>
+              <a href={personalData.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="btn-ghost !px-4">
+                <FiGithub />
+              </a>
+              <a href={personalData.linkedIn} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="btn-ghost !px-4">
+                <FiLinkedin />
+              </a>
+              <a href={`mailto:${personalData.email}`} aria-label="Email" className="btn-ghost !px-4">
+                <FiMail />
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
-export default Home;
+export default Navbar;

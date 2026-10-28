@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# Shrutika Malve – Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Single-page portfolio built with React (Create React App), Tailwind CSS, Three.js via React Three Fiber, and Framer Motion.
 
-## Available Scripts
+Live: https://shrutikam.netlify.app
 
-In the project directory, you can run:
+## What's inside
 
-### `npm start`
+- **Hero:** an interactive 3D neural-network globe (drag to spin, leans toward the cursor) over a receding 3D grid, with count-up stats.
+- **About:** a layered 3D photo card whose badges float at different depths.
+- **Experience:** a timeline whose rail fills on scroll, with impact metrics per role and a collapsible list of earlier roles.
+- **Projects:** featured projects in 3D browser mockups that rotate as you scroll, plus a filterable grid and a detail modal.
+- **Skills:** a draggable 3D icon globe and grouped skill lists.
+- **Education:** an animated CGPA ring and score bars.
+- **Achievements:** 3D flip cards for podium finishes, plus a list of other milestones.
+- **Contact:** an EmailJS form, copy-to-clipboard email, and social links.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Motion respects `prefers-reduced-motion`. The 3D scenes pause when scrolled off-screen, and three.js loads in a separate chunk.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Editing content
 
-### `npm test`
+All content lives in `src/utils/data/`:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| File | Controls |
+| --- | --- |
+| `personal-data.js` | Name, roles, tagline, contact details, hero stats, "What I do" cards |
+| `experience.js` | Résumé roles (metrics, highlights, stack) and earlier roles |
+| `projects-data.js` | Featured projects, the project grid and filter categories |
+| `skills.js` | Skill groups (also feeds the 3D globe) |
+| `educations.js` | Degree and school scores |
+| `achievements.js` | Podium flip cards, other milestones, "Beyond code" |
 
-### `npm run build`
+Skill logos come from `src/utils/svg/skills/`, matched by name. Skills without a logo show a monogram. The résumé download is `src/utils/Resume.pdf`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Scripts
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `npm start`: development server at http://localhost:3000
+- `npm run build`: production build in `build/`
+- `npm test`: content consistency tests
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contact form
 
-### `npm run eject`
+Set these in `.env` (EmailJS):
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+REACT_APP_EMAILJS_USER_ID=
+REACT_APP_EMAILJS_SERVICE_ID=
+REACT_APP_EMAILJS_TEMPLATE_ID=
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The template receives `name`, `email` and `message`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Deploying
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`public/_redirects` sends every path to `index.html` on Netlify, so old links like `/projects` still work. They scroll to the matching section.

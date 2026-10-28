@@ -1,113 +1,183 @@
-import React from 'react';
-import './intro.css';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { FiArrowRight, FiDownload, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 import resume from '../../utils/Resume.pdf';
-import Typewriter from 'typewriter-effect';
-import Logo from '../../utils/5.png';
-import { Link } from 'react-router-dom/dist';
+import { personalData, stats } from '../../utils/data/personal-data';
+import CountUp from '../helper/count-up';
 
-const Intro = () => {
-  const name = "Shrutika Malve";
+// three.js is heavy, so the globe loads in its own chunk after the text renders
+const HeroScene = lazy(() => import('../helper/hero-scene'));
+
+const floatingChips = [
+  { label: 'RAG · ChromaDB', className: 'left-[2%] top-[12%]', delay: '0s' },
+  { label: 'Multi-Agent Systems', className: 'right-[0%] top-[22%]', delay: '1.2s' },
+  { label: 'FastAPI · Go', className: 'bottom-[24%] left-[0%]', delay: '2.1s' },
+  { label: 'LangChain · Ollama', className: 'bottom-[10%] right-[8%]', delay: '0.6s' },
+];
+
+// Cycles through roles with a 3D flip on the X axis
+const RoleRotator = ({ roles }) => {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setIndex((i) => (i + 1) % roles.length), 2600);
+    return () => clearInterval(id);
+  }, [roles.length]);
 
   return (
-    <div className="relative w-full bg-transparent">
-      <section className="hero relative w-full bg-transparent overflow-hidden text-white py-10 sm:py-20">
-        {/* Background Gradient */}
-        <div className="absolute inset-0 w-full bg-gradient-to-r from-[#121212] via-[#1a1a2d] to-[#2a2a3f] animate-gradient bg-opacity-95"></div>
+    <span className="relative inline-flex [perspective:600px]">
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={roles[index]}
+          initial={{ rotateX: -90, opacity: 0 }}
+          animate={{ rotateX: 0, opacity: 1 }}
+          exit={{ rotateX: 90, opacity: 0 }}
+          transition={{ duration: 0.45, ease: 'easeOut' }}
+          className="inline-block origin-center font-semibold text-cyan-300"
+        >
+          {roles[index]}
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  );
+};
 
-        {/* Floating Shapes */}
-        <div className="absolute top-10 sm:top-20 left-1/4 sm:left-1/4 w-24 sm:w-32 h-24 sm:h-32 bg-gradient-to-r from-[#ff7eb3] to-[#ff758c] rounded-full animate-float"></div>
-        <div className="absolute bottom-1 right-11 sm:right-1/4 w-24 h-24 sm:w-40 sm:h-40 bg-gradient-to-r from-[#6a83f4] to-[#4c61d4] rounded-full animate-float animation-delay-2s"></div>
+const wordVariants = {
+  hidden: { opacity: 0, rotateX: -80, y: 40 },
+  show: (i) => ({
+    opacity: 1,
+    rotateX: 0,
+    y: 0,
+    transition: { delay: 0.15 + i * 0.12, duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+  }),
+};
 
-        {/* Content Wrapper */}
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex flex-col-reverse lg:flex-row items-center gap-8">
-          {/* Left Content (Text) */}
-          <div className="lg:w-1/2 text-center lg:text-left">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#ffdb70] to-[#ffa45c]" data-aos="slide-right">
-              Hi,
-            </h1>
+const fadeUp = (delay) => ({
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { delay, duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] },
+});
 
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#a5f3eb] to-[#b3cfff] flex justify-center lg:justify-start">
-              <span className="mr-2">I'm</span>
-              {name.split("").map((letter, index) => (
-                <span
-                  key={index}
-                  className={`group relative inline-block cursor-pointer ${
-                    letter === " " ? "whitespace-pre" : ""
-                  } text-transparent bg-clip-text bg-gradient-to-r from-[#ffa1e3] to-[#a1d1ff] hover:from-[#ff85d4] hover:to-[#ffed9b] hover-rubber-band`}
-                  data-aos="fade-down"
-                  data-aos-delay={index * 100}
-                  data-aos-duration="800"
-                >
-                  {letter}
-                </span>
-              ))}
-            </h2>
+const Intro = () => {
+  const [firstName, lastName] = personalData.name.split(' ');
 
-            {/* Typewriter Effect */}
-            <div className="flex text-lg sm:text-2xl lg:text-3xl mb-8 max-w-2xl justify-center lg:justify-start">
-              <span className="mr-2" data-aos="slide-right">
-                I'm a
-              </span>
-              <span
-                className="text-[#ffdb70] font-bold"
-                data-aos="slide-right"
-              >
-                <Typewriter
-                  options={{
-                    strings: [
-                      "AI Researcher",
-                      "Full Stack Developer",
-                      "Machine Learning Enthusiast",
-                      "Generative AI Developer",
-                      "Open Source Contributor",
-                    ],
-                    autoStart: true,
-                    loop: true,
-                    deleteSpeed: 50,
-                  }}
-                />
-              </span>
-            </div>
+  return (
+    <section id="home" className="relative isolate overflow-hidden pb-16 pt-28 lg:pt-32">
+      {/* Backdrop: aurora glow + receding 3D grid */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10"
+        style={{
+          background:
+            'radial-gradient(55% 50% at 75% 35%, rgba(139,92,246,0.22), transparent 70%), radial-gradient(40% 40% at 10% 75%, rgba(34,211,238,0.10), transparent 70%)',
+        }}
+      />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="grid-floor" />
+      </div>
 
-            {/* Buttons */}
-            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-6" data-aos="fade-up">
-              <Link
-                to="/projects"
-                className="relative inline-block text-[#ffdb70] font-semibold py-2 px-6 rounded-lg shadow-xl overflow-hidden transition-all duration-300 group border-2 border-[#4c61d4]"
-                data-aos="fade-right"
-              >
-                <span className="relative z-10 group-hover:text-white text-lg transition-colors duration-300">
-                  View My Work
-                </span>
-                <span className="absolute inset-0 bg-gradient-to-r from-[#4c61d4] to-[#6a83f4] group-hover:from-[#ff758c] group-hover:to-[#ff7eb3] transition-transform duration-300 transform -translate-x-full group-hover:translate-x-0"></span>
-              </Link>
+      <div className="container-x grid items-center gap-6 lg:min-h-[calc(100svh-15rem)] lg:grid-cols-[1.05fr_1fr]">
+        {/* Text */}
+        <div className="relative z-10 text-center lg:text-left">
+          <motion.span {...fadeUp(0)} className="chip mb-6 !text-xs">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+            </span>
+            {personalData.currentRole} @ {personalData.currentCompany}
+          </motion.span>
 
+          <h1 className="font-display text-6xl font-bold leading-[0.95] tracking-tight text-white [perspective:800px] sm:text-7xl lg:text-8xl">
+            <motion.span custom={0} variants={wordVariants} initial="hidden" animate="show" className="inline-block origin-bottom">
+              {firstName}
+            </motion.span>
+            <br />
+            <motion.span custom={1} variants={wordVariants} initial="hidden" animate="show" className="text-gradient inline-block origin-bottom pb-2">
+              {lastName}
+            </motion.span>
+          </h1>
+
+          <motion.p {...fadeUp(0.45)} className="mt-6 text-xl text-slate-300 sm:text-2xl">
+            <span className="text-slate-400">I'm a </span>
+            <RoleRotator roles={personalData.roles} />
+          </motion.p>
+
+          <motion.p {...fadeUp(0.55)} className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-slate-400 lg:mx-0">
+            {personalData.tagline}
+          </motion.p>
+
+          <motion.div {...fadeUp(0.65)} className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
+            <a href="#projects" className="btn-primary w-full sm:w-auto">
+              Explore my work <FiArrowRight />
+            </a>
+            <a href={resume} download="Shrutika_Malve_Resume.pdf" className="btn-ghost w-full sm:w-auto">
+              <FiDownload /> Download résumé
+            </a>
+          </motion.div>
+
+          <motion.div {...fadeUp(0.75)} className="mt-8 flex items-center justify-center gap-3 lg:justify-start">
+            {[
+              { href: personalData.github, label: 'GitHub', icon: <FiGithub /> },
+              { href: personalData.linkedIn, label: 'LinkedIn', icon: <FiLinkedin /> },
+              { href: `mailto:${personalData.email}`, label: 'Email', icon: <FiMail /> },
+            ].map((social) => (
               <a
-                href={resume}
-                download="Shrutika_Malve_Resume.pdf"
-                className="relative inline-block bg-[#ffdb70] text-[#1a1a2d] font-semibold py-2 px-6 rounded-lg shadow-xl overflow-hidden transition-all duration-300 group border-2 border-[#4c61d4]"
-                data-aos="fade-left"
+                key={social.label}
+                href={social.href}
+                target={social.href.startsWith('http') ? '_blank' : undefined}
+                rel="noreferrer"
+                aria-label={social.label}
+                className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/[0.03] text-lg text-slate-300 transition hover:-translate-y-1 hover:border-violet-400/60 hover:text-white"
               >
-                <span className="relative z-10 group-hover:text-white text-lg transition-colors duration-300">
-                  Download Resume
-                </span>
-                <span className="absolute inset-0 bg-gradient-to-r from-[#ff758c] to-[#ff7eb3] group-hover:from-[#4c61d4] group-hover:to-[#6a83f4] transition-transform duration-300 transform -translate-x-full group-hover:translate-x-0"></span>
+                {social.icon}
               </a>
-            </div>
-          </div>
-
-          {/* Right Content (Logo) */}
-          <div className="lg:w-1/2 flex justify-center items-center" data-aos="slide-right">
-            <img
-              src={Logo}
-              alt="Shrutika's Logo"
-              className="mt-7 rounded-lg max-w-full h-[200px] sm:h-[250px] lg:h-[360px] transform rotate-45"
-            />
-          </div>
+            ))}
+          </motion.div>
         </div>
-      </section>
-      
-    </div>
+
+        {/* 3D globe */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className="relative mx-auto h-[340px] w-full max-w-[560px] sm:h-[440px] lg:h-[560px]"
+        >
+          <Suspense fallback={null}>
+            <HeroScene />
+          </Suspense>
+
+          {floatingChips.map((chip) => (
+            <span
+              key={chip.label}
+              className={`chip pointer-events-none absolute hidden animate-float bg-ink-900/80 !text-xs shadow-lg shadow-black/40 backdrop-blur sm:inline-flex ${chip.className}`}
+              style={{ animationDelay: chip.delay }}
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-cyan-300" />
+              {chip.label}
+            </span>
+          ))}
+
+          <p className="pointer-events-none absolute inset-x-0 bottom-0 hidden text-center font-mono text-[11px] uppercase tracking-[0.25em] text-slate-500 lg:block">
+            drag to spin the network
+          </p>
+        </motion.div>
+      </div>
+
+      {/* Stats */}
+      <div className="container-x mt-12">
+        <motion.dl {...fadeUp(0.9)} className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          {stats.map((stat) => (
+            <div key={stat.label} className="card px-5 py-4 text-center sm:text-left">
+              <dt className="sr-only">{stat.label}</dt>
+              <dd className="font-display text-3xl font-semibold text-white sm:text-4xl">
+                <CountUp value={stat.value} decimals={stat.decimals} suffix={stat.suffix} />
+              </dd>
+              <dd className="mt-1 text-xs leading-snug text-slate-400 sm:text-sm">{stat.label}</dd>
+            </div>
+          ))}
+        </motion.dl>
+      </div>
+    </section>
   );
 };
 

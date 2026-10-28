@@ -1,166 +1,44 @@
-export const skillsData = [
-  'Tensorflow',
-  'Spring Boot',
-  'NodeJS',
-  'Express JS',
-  'Python',
-  'C++',
-  'Java',
-  'Streamlit',
-  'Vercel',
-  'Render',
-  'Netlify',
-  'Keras',
-  'Numpy',
-  'Pandas',
-  'Canva',
-  'PHP',
-  'HTML',
-  'CSS',
-  'Javascript',
-  'React',
-  'Next JS',
-  'Tailwind',
-  'MongoDB',
-  'MySQL',
-  'GitHub',
-  'AWS',
-  'Bootstrap',
-  'Tailwind',
-  'Figma',
-  'Firebase',
-  'MaterialUI',
-  'Nginx',
-  'Flask',
-]
+// Skills grouped as on the resume. Names are matched to icons in utils/svg/skills
+// (see components/skills/skill-icon.js); skills without an icon get a monogram.
+export const skillsCategorized = [
+  {
+    title: 'Languages',
+    items: ['Python', 'Go', 'Java', 'TypeScript', 'JavaScript', 'SQL'],
+  },
+  {
+    title: 'AI / GenAI',
+    items: [
+      'LLMs',
+      'RAG',
+      'Multi-Agent Systems',
+      'LangChain',
+      'Prompt Engineering',
+      'Vector Search',
+      'ChromaDB',
+      'FAISS',
+      'Ollama',
+      'Federated Learning',
+      'TensorFlow',
+      'Pandas',
+    ],
+  },
+  {
+    title: 'Backend & Frontend',
+    items: ['FastAPI', 'Spring Boot', 'Flask', 'Node.js', 'REST APIs', 'WebSockets', 'Angular', 'React.js'],
+  },
+  {
+    title: 'Testing & DevOps',
+    items: ['JUnit 5', 'Pytest', 'Integration Testing', 'Test Automation', 'Docker', 'Maven', 'Git', 'Artifactory', 'Puppet', 'CI/CD'],
+  },
+  {
+    title: 'Databases & Search',
+    items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Elasticsearch', 'Firebase', 'ZODB'],
+  },
+];
 
+// Flat, de-duplicated list of every skill.
+export const skillsData = [...new Set(skillsCategorized.flatMap((group) => group.items))];
 
-export const skillsCategorized = {
-  languages: [
-    'Python',
-    'C++',
-    'Java',
-    'PHP',
-    'HTML',
-    'CSS',
-    'Javascript',
-  ],
-  frameworks: [
-    'Tensorflow',
-    'Spring Boot',
-    'NodeJS',
-    'Express JS',
-    'Streamlit',
-    'React',
-    'Next JS',
-    'Tailwind',
-    'Keras',
-    'Numpy',
-    'Pandas',
-    'MaterialUI',
-    'Flask',
-    'Bootstrap',
-  ],
-  hosting: [
-    'Vercel',
-    'Render',
-    'Netlify',
-    'Firebase',
-    'AWS',
-    'Nginx',
-  ],
-  'database and tools':[
-    'MongoDB',
-    'MySQL',  
-    'Firebase',
-    'Canva',
-    'Figma',
-    'GitHub',
-  ],
-};
-// Choose your skills from below. Make sure it's in the same format and spelled correctly.
-// Couldn't find the required skills? Raise an issue on github at https://github.com/hhhrrrttt222111/developer-portfolio/issues/new
-
-
-// AVAILABLE SKILLS
-
-/* 
-  HTML
-  CSS
-  JS 
-  React
-  Next JS
-  Nuxt JS
-  Node JS
-  Vue
-  Angular
-  Docker
-  Photoshop
-  Illustrator
-  Svelte
-  GCP
-  Azure
-  Fastify
-  Haxe
-  Ionic
-  Markdown
-  Microsoft Office
-  Picsart
-  Sketch
-  Unity
-  WolframAlpha
-  Adobe XD
-  After Effects
-  Bootstrap
-  Bulma
-  CapacitorJs
-  Coffeescript
-  MemSQL
-  C
-  C++
-  C#
-  Python
-  Java
-  Julia
-  Matlab
-  Swift
-  Ruby
-  Kotlin
-  Go
-  PHP
-  Flutter
-  Dart
-  Typescript
-  Swift
-  Git
-  Figma
-  Canva
-  Ubuntu
-  Bootstrap
-  MongoDB
-  Tailwind
-  ViteJS
-  VuetifyJS
-  MySQL
-  PostgreSQL
-  AWS
-  Firebase
-  Blender
-  Premiere Pro
-  Adobe Audition
-  Deno
-  Django
-  Gimp
-  Graphql
-  Lightroom
-  MaterialUI
-  Nginx
-  Numpy
-  OpenCV
-  Pytorch
-  Selenium
-  Strapi
-  Tensorflow
-  Webex
-  Wordpress
-*/
+// Skills without a logo that still belong on the 3D globe (shown as monograms).
+// Everything else on the globe is picked automatically from skills that have a logo.
+export const globeMonograms = ['LLMs', 'RAG', 'LangChain', 'FastAPI', 'ChromaDB', 'FAISS', 'Ollama', 'Redis', 'Elasticsearch'];
